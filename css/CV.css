@@ -1,0 +1,55 @@
+/*
+style="color:#afc5ff;" --> blauw
+style="color:#b3bed1;"/ #69728A --> donker grijs
+style="color:#f4ecf7;" --> licht rosa
+style="color:#CBC3E3;" --> grijze paars
+style="color:#C3B1E1;" --> paars
+style="color:#E6E6FA;" --> licht paars
+*/
+
+body{
+    background-color: #E6E6FA;
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+    line-height: 30px;
+}
+header{
+    background-color:#C3B1E1;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 1px;
+}
+header h1{
+    color:#f4ecf7;
+    font-size: 40px;
+}
+header img{
+    border-radius: 160px;
+    width: 300px;
+    border: 10px solid #f4ecf7;
+}
+main{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+main img{
+    max-width: 100%;
+}
+h2{
+    font-size: 25px;
+    color: #69728A;
+}
+h1{
+    font-size: 20px;
+}
+
+footer{
+    text-align: center;
+    line-height: 5px;
+    padding: 20px;
+    background-color:#C3B1E1;
+}
+footer p{
+    margin: 0;
+}

@@ -29,9 +29,9 @@ header img{
     border: 10px solid #f4ecf7;
 }
 main{
-    max-width: 800px;
+    max-width: 60%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 20;
 }
 main img{
     max-width: 100%;
@@ -44,19 +44,34 @@ h1{
     font-size: 20px;
 }
 
-div .wrapper {
+div {
+    background-color: #B295FF;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    height: auto;
+    overflow: auto;
+    padding: 14px;
+}
+
+.wrapper {
     vertical-align: top;
-    height: 350px;
+    min-height: 400px;
+    
+}
+.wrapper-doubleheight{
+    vertical-align: top;
+    min-height: 800px;
+    
 }
 
 div .left{
-    /* float: left; */
-    display: inline-block;
+    float: left;
+    /* display: inline-block; */
     width: 398px;
 }
 div .right {
-    /* float: right; */
-    display: inline-block;
+    float: right;
+    /* display: inline-block; */
     width: 398px;
 }
 .collapsible {
@@ -77,9 +92,10 @@ div .right {
   
 .content {
     padding: 0 18px;
-    display: none;
+    max-height: 0;
     overflow: hidden;
     background-color: #f1f1f1;
+    transition: max-height 0.4s ease-out;
   }
 
 footer{

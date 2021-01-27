@@ -7,11 +7,12 @@ style="color:#feb5ff;" --> licht rosa-paars
 style="color:#9a009c;" --> donker rosa-paars
 */
 
-body{
+html, body{
     background-color: lavender;
     margin: 0;
     font-family: 'Ubuntu', sans-serif;
     line-height: 30px;
+    height: 100%;
 }
 header{
     background-color:#9a009c;
@@ -32,9 +33,11 @@ header img{
 main{
     min-width: 800px;
     max-width: 100%;
-    margin: auto;
-    padding: 20;
+    margin: 0;
+    padding: 0;
     align-content: center;
+    position: relative;
+    overflow: hidden;
 }
 main img{
     max-width: 100%;
@@ -43,22 +46,23 @@ main img{
 .parallax-container{
     position: absolute;
 }
+.parallax-container-flipped {
+    position: absolute;
+    transform: scaleX(-1);
+    width: 100%;
+}
 .parallax-item{
     width: 50%;
     height: 50%;
-    left: 2%;
-    top: 60%;
     display: flex;
     align-items: center;
-    margin-left: 3%;
     
 }
 .parallax-item img{
     max-width: 50%;
     max-height: 50%;
     filter: drop-shadow(3px 2px 2px #6c009e);
-    /* margin-left: -50px;
-    margin-top: -50px; */
+    
 }
 .info-container {
     position: relative;
@@ -66,6 +70,7 @@ main img{
     margin-right: auto;
     width: 800px;
 }
+
 
 h2{
     font-size: 25px;
@@ -105,6 +110,7 @@ div .right {
     /* display: inline-block; */
     width: 50%;
 }
+
 .collapsible {
     background-color: #9a009c;
     color: white;
@@ -137,6 +143,7 @@ footer{
     background-color:#9a009c;
     color: white;
     position: relative;
+    margin: 0;
 }
 footer p{
     margin: 0;

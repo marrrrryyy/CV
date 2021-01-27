@@ -46,24 +46,29 @@ input.mouseY.range = input.mouseY.end - input.mouseY.start;
 
 var output = {
     x: {
-        start: -1,
-        end: 1,
+        start: -10,
+        end: -50,
         current:0,
     },
-    y: { 
+    y: {
+      start: -1,
+      end: 1,
+      current:0,
+  },
+    scrollY: { 
         start: -1000,
-        end: 10,
+        end: 1,
         current:0,
     },
     zIndex: {
         range: 20000,
     },
     scale: {
-        start: 1,
-        end: -0.2,
+        start: 1.5,
+        end: .8,
     },
     blur: {
-        startingDepth: -0.4,
+        startingDepth: -0.5,
         range: 20,
     }
 };
@@ -71,6 +76,8 @@ var output = {
 output.scale.range = output.scale.end - output.scale.start;
 output.x.range = output.x.end - output.x.start;
 output.y.range = output.y.end - output.y.start;
+
+output.scrollY.range = output.scrollY.end - output.scrollY.start;
 
 var mouse = {
     x: window.innerWidth * .5,
@@ -80,6 +87,13 @@ var mouse = {
 var updateInputs = function() {
     input.mouseX.current = mouse.x;
     input.mouseX.fraction = (input.mouseX.current - input.mouseX.start) / input.mouseX.range;
+
+    if(input.mouseX.fraction > 1) {
+      input.mouseX.fraction = 1;
+    }
+    if(input.mouseX.fraction < 0) {
+      input.mouseX.fraction = 0;
+    }
 
     input.mouseY.current = mouse.y;
     input.mouseY.fraction = (input.mouseY.current - input.mouseY.start) / input.mouseY.range;
@@ -91,18 +105,36 @@ var updateInputs = function() {
 }
 
 var updateOutputs = function() {
-    // output.x.current = output.x.start + (input.mouseX.fraction * output.x.range);
-    // output.y.current = output.y.start + (input.mouseY.fraction * output.y.range);
-    output.y.current = output.y.end - (input.scrollY.fraction * output.y.range);
+  if(input.mouseX.fraction > 0 && input.mouseX.fraction < .5) {
+    output.x.current = output.x.start + (input.mouseX.fraction * output.x.range);
+  }
+  if(input.mouseX.fraction > 0.5 && input.mouseX.fraction < 1) {
+    output.x.current = output.x.end - (input.mouseX.fraction * output.x.range);
+  }
+
+    output.y.current = output.y.start + (input.mouseY.fraction * output.y.range);
+    output.scrollY.current = output.scrollY.end - (input.scrollY.fraction * output.scrollY.range);
 
 }
 
 var updateEachItem = function() {
 itemsArray.forEach(function (item, k) {
     var depth = parseFloat(item.dataset.depth, 10);
+
+    var itemInput = {
+      scrollY: {
+        start: item.offsetParent.offsetTop,
+        end: item.offsetParent.offsetTop + window.innerHeight,
+      }
+    }
+    itemInput.scrollY.range = itemInput.scrollY.end - itemInput.scrollY.start;
+    itemInput.scrollY.fraction = (input.scrollY.current - itemInput.scrollY.start) / itemInput.scrollY.range;
+
+    var itemOutputYCurrent = output.scrollY.start + (itemInput.scrollY.fraction * output.scrollY.range);
+
     var itemOutput = {
         x: output.x.current - (output.x.current * depth),
-        y: output.y.current - (output.y.current * depth),
+        y: itemOutputYCurrent * depth,
         zIndex: output.zIndex.range - (output.zIndex.range * depth),
         scale: output.scale.start + (output.scale.range * depth),
         blur: (depth - output.blur.startingDepth) * output.blur.range
@@ -130,7 +162,7 @@ var handleScroll = function() {
 }
 
 var handleResize = function() {
-    input.mouseX.end = window.innerWidth;
+    input.mouseX.end = window.innerWidth - (window.innerWidth * 0.75);
     input.mouseX.range = input.mouseX.end - input.mouseX.start;
 
     input.mouseY.end = window.innerHeight;
@@ -142,7 +174,7 @@ var handleResize = function() {
 }
 
 
-//window.addEventListener("mousemove", handleMouseMove);
+window.addEventListener("mousemove", handleMouseMove);
 document.addEventListener("scroll", handleScroll);
 window.addEventListener("resize", handleResize);
 

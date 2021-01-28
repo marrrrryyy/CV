@@ -162,7 +162,7 @@ var handleScroll = function() {
 }
 
 var handleResize = function() {
-    input.mouseX.end = window.innerWidth - (window.innerWidth * 0.75);
+    input.mouseX.end = window.innerWidth;
     input.mouseX.range = input.mouseX.end - input.mouseX.start;
 
     input.mouseY.end = window.innerHeight;

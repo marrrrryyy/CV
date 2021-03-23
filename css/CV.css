@@ -46,6 +46,7 @@ main img{
 .parallax-container{
     position: absolute;
 }
+
 .parallax-container-flipped {
     position: absolute;
     transform: scaleX(-1);
@@ -58,6 +59,7 @@ main img{
     align-items: center;
     
 }
+
 .parallax-item img{
     max-width: 50%;
     max-height: 50%;
@@ -79,6 +81,30 @@ h2{
 h1{
     font-size: 20px;
 }
+
+a:link {
+    color: purple;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:hover {
+    color: darkorchid;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  a:active {
+    color: whitesmoke;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  iframe {
+      height: 435px;
+  }
 
 .background{
     background-color: #e1a3ff;
